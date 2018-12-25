@@ -4,7 +4,8 @@ Simple JavaScript library. Making your life with WordPress easier.
 ## Usage
 Simply enqueue ```/dist/js/wp-js-help.min.js``` to your WordPress theme and try it out in console.
 
-First, try ```_WPHelp```, theny try what you want:
+First, try ```_WPHelp```, then try what you want:
+
 * ```getArticleID``` for getting article's ID
 * ```getCategoryID``` for getting category's ID
 * ```getCategoryName``` for getting category's name from body class
