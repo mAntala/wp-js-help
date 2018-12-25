@@ -4,12 +4,17 @@ const WPJSHelp = (function() {
   const _body = document.body;
 
   // PRIVATE FUNCTIONS
+
   const hasBodyClass = (className) => {
     if(className) {
       return _body.classList.contains(className);
     }
 
     return;
+  }
+
+  const makeArrayFrom = (list) => {
+    return Array.from(list);
   }
 
   // PUBLIC FUNCTIONS
@@ -42,12 +47,52 @@ const WPJSHelp = (function() {
   const isSearch = () => {
     return hasBodyClass('search') || hasBodyClass('search-results');
   }
+  /**
+   * Get post ID.
+   * @return {Object} Post's ID.
+   */
+  const getArticleID = () => {
+    if(isArticle()) {
+      const _bodyClassList = makeArrayFrom(_body.classList);
+      for(var i in _bodyClassList) {
+        let item = _bodyClassList[i];
+        if(item.match(/postid/g)) {
+          return {
+            postId: parseInt(item.match(/\d/g).join(''), 10)
+          }
+        }
+      }
+    }
+
+    return;
+  }
+  /**
+   * Get category ID.
+   * @return {Object} Category's ID.
+   */
+  const getCategoryID = () => {
+    if(isCategory()) {
+      const _bodyClassList = makeArrayFrom(_body.classList);
+      for(var i in _bodyClassList) {
+        let item = _bodyClassList[i];
+        if(item.match(/(?:category)-\d+/g)) {
+          return {
+            categoryId: parseInt(item.split('-')[1], 10)
+          }
+        }
+      }
+    }
+
+    return;
+  }
 
   return {
     isHome,
     isCategory,
     isArticle,
-    isSearch
+    isSearch,
+    getArticleID,
+    getCategoryID
   };
 
 });
