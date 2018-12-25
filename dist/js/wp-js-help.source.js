@@ -1,10 +1,20 @@
 "use strict";
 
 var WPJSHelp = function WPJSHelp() {
-  var _body = document.querySelector('body');
+  // PRIVATE VARIABLES
+  var _body = document.body; // PRIVATE FUNCTIONS
+
+  var hasBodyClass = function hasBodyClass(className) {
+    if (className) {
+      return _body.classList.contains(className);
+    }
+
+    return;
+  };
+
 
   var isHome = function isHome() {
-    return _body;
+    return hasBodyClass('home');
   };
 
   return {
