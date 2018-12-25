@@ -99,6 +99,29 @@ var WPJSHelp = function WPJSHelp() {
 
     return;
   };
+  /**
+   * Get category name.
+   * @return {String} Category's name.
+   */
+
+
+  var getCategoryName = function getCategoryName() {
+    if (isCategory()) {
+      var _bodyClassList = makeArrayFrom(_body.classList);
+
+      for (var i in _bodyClassList) {
+        var item = _bodyClassList[i];
+
+        if (item.match(/(?:category)-\w+/g)) {
+          return {
+            categoryName: item.split('-')[1].toLowerCase()
+          };
+        }
+      }
+    }
+
+    return;
+  };
 
   return {
     isHome: isHome,
@@ -106,7 +129,8 @@ var WPJSHelp = function WPJSHelp() {
     isArticle: isArticle,
     isSearch: isSearch,
     getArticleID: getArticleID,
-    getCategoryID: getCategoryID
+    getCategoryID: getCategoryID,
+    getCategoryName: getCategoryName
   };
 };
 

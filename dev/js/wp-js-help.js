@@ -85,6 +85,25 @@ const WPJSHelp = (function() {
 
     return;
   }
+  /**
+   * Get category name.
+   * @return {String} Category's name.
+   */
+  const getCategoryName = () => {
+    if(isCategory()) {
+      const _bodyClassList = makeArrayFrom(_body.classList);
+      for(var i in _bodyClassList) {
+        let item = _bodyClassList[i];
+        if(item.match(/(?:category)-\w+/g)) {
+          return {
+            categoryName: item.split('-')[1].toLowerCase()
+          }
+        }
+      }
+    }
+
+    return;
+  }
 
   return {
     isHome,
@@ -92,7 +111,8 @@ const WPJSHelp = (function() {
     isArticle,
     isSearch,
     getArticleID,
-    getCategoryID
+    getCategoryID,
+    getCategoryName
   };
 
 });
