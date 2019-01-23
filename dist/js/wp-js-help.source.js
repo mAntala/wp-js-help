@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 var WPJSHelp = function WPJSHelp() {
   // PRIVATE VARIABLES
   var _body = document.body; // PRIVATE FUNCTIONS
@@ -122,6 +124,29 @@ var WPJSHelp = function WPJSHelp() {
 
     return;
   };
+  /**
+   * Check, if function exists. Based on typeof.
+   * If function exists and is function, return true.
+   * If function/variable/etc... is undefined, console throw error.
+   * If as argument is passed variable, object or array, return false.
+   * @param  {function} functionName Name of function.
+   * @return {Boolean}
+   */
+
+
+  var functionExists = function functionExists(functionName) {
+    if (functionName) {
+      var type = _typeof(functionName);
+
+      if (type !== 'function') {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    return;
+  };
 
   return {
     isHome: isHome,
@@ -130,7 +155,8 @@ var WPJSHelp = function WPJSHelp() {
     isSearch: isSearch,
     getArticleID: getArticleID,
     getCategoryID: getCategoryID,
-    getCategoryName: getCategoryName
+    getCategoryName: getCategoryName,
+    functionExists: functionExists
   };
 };
 

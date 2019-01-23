@@ -105,6 +105,27 @@ const WPJSHelp = (function() {
     return;
   }
 
+  /**
+   * Check, if function exists. Based on typeof.
+   * If function exists and is function, return true.
+   * If function/variable/etc... is undefined, console throw error.
+   * If as argument is passed variable, object or array, return false.
+   * @param  {function} functionName Name of function.
+   * @return {Boolean}
+   */
+  const functionExists = (functionName) => {
+    if(functionName) {
+      let type = typeof functionName;
+      if(type !== 'function') {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+    return;
+  }
+
   return {
     isHome,
     isCategory,
@@ -112,7 +133,8 @@ const WPJSHelp = (function() {
     isSearch,
     getArticleID,
     getCategoryID,
-    getCategoryName
+    getCategoryName,
+    functionExists
   };
 
 });
