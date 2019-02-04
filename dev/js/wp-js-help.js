@@ -5,6 +5,11 @@ const WPJSHelp = (function() {
 
   // PRIVATE FUNCTIONS
 
+  /**
+   * Checks if body has class provided as parameter.
+   * @param  {String}  className Class name to check if <body> contains.
+   * @return {Boolean}           
+   */
   const hasBodyClass = (className) => {
     if(className) {
       return _body.classList.contains(className);
@@ -13,6 +18,12 @@ const WPJSHelp = (function() {
     return;
   }
 
+  /**
+   * I dunno why I made this function. Whatever.
+   * It will make Array from NODE list, for example.
+   * @param  {Node List} list Any list of items, that is NOT Array.
+   * @return {Array}          Returns array.
+   */
   const makeArrayFrom = (list) => {
     return Array.from(list);
   }
@@ -105,6 +116,27 @@ const WPJSHelp = (function() {
     return;
   }
 
+  /**
+   * Check, if function exists. Based on typeof.
+   * If function exists and is function, return true.
+   * If function/variable/etc... is undefined, console throw error.
+   * If as argument is passed variable, object or array, return false.
+   * @param  {function} functionName Name of function.
+   * @return {Boolean}
+   */
+  const functionExists = (functionName) => {
+    if(functionName) {
+      let type = typeof functionName;
+      if(type !== 'function') {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+    return;
+  }
+
   return {
     isHome,
     isCategory,
@@ -112,7 +144,8 @@ const WPJSHelp = (function() {
     isSearch,
     getArticleID,
     getCategoryID,
-    getCategoryName
+    getCategoryName,
+    functionExists
   };
 
 });
