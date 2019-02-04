@@ -5,6 +5,11 @@ const WPJSHelp = (function() {
 
   // PRIVATE FUNCTIONS
 
+  /**
+   * Checks if body has class provided as parameter.
+   * @param  {String}  className Class name to check if <body> contains.
+   * @return {Boolean}           
+   */
   const hasBodyClass = (className) => {
     if(className) {
       return _body.classList.contains(className);
@@ -13,6 +18,12 @@ const WPJSHelp = (function() {
     return;
   }
 
+  /**
+   * I dunno why I made this function. Whatever.
+   * It will make Array from NODE list, for example.
+   * @param  {Node List} list Any list of items, that is NOT Array.
+   * @return {Array}          Returns array.
+   */
   const makeArrayFrom = (list) => {
     return Array.from(list);
   }
