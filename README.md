@@ -13,3 +13,4 @@ First, try ```_WPHelp```, then try what you want:
 * ```isHome``` to check, if page is homepage
 * ```isCategory``` to check, if page is category / archive
 * ```isSearch``` to check, if page is search results page
+* ```functionExists``` to check, if certain function exists. 
