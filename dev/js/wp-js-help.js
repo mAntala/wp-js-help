@@ -1,14 +1,26 @@
+/**
+ * WP JS HELP is a small library for making your life with WordPress easier.
+ * Have you ever wanted to use similar WP function but on front-end? Well...
+ * Here we are.
+ * @description WordPress PHP functions made in JavaScript to be used on front-end.
+ * @author Maroš Antala
+ * @version 0.0.1
+ * @github https://github.com/mAntala/wp-js-help
+ * @license MIT
+ *
+ * Copyright (c) 2018 Maroš Antala
+ *
+ */
 const WPJSHelp = (function() {
 
   // PRIVATE VARIABLES
   const _body = document.body;
 
   // PRIVATE FUNCTIONS
-
   /**
    * Checks if body has class provided as parameter.
    * @param  {String}  className Class name to check if <body> contains.
-   * @return {Boolean}           
+   * @return {Boolean}
    */
   const hasBodyClass = (className) => {
     if(className) {
@@ -137,6 +149,15 @@ const WPJSHelp = (function() {
     return;
   }
 
+  /**
+   * Removes all HTML tags including <script> and <style>
+   * @param  {String} string HTML string
+   * @return {String}        Returns string without HTML tags
+   * @credis Petrović Stefan
+   * @website https://petrovicstefan.rs/
+   */
+  const stripAllTags = (string) => string.replace(/<[^>]*>/g, '');
+
   return {
     isHome,
     isCategory,
@@ -145,7 +166,8 @@ const WPJSHelp = (function() {
     getArticleID,
     getCategoryID,
     getCategoryName,
-    functionExists
+    functionExists,
+    stripAllTags
   };
 
 });

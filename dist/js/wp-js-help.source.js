@@ -2,6 +2,19 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+/**
+ * WP JS HELP is a small library for making your life with WordPress easier.
+ * Have you ever wanted to use similar WP function but on front-end? Well...
+ * Here we are.
+ * @description WordPress PHP functions made in JavaScript to be used on front-end.
+ * @author Maroš Antala
+ * @version 0.0.1
+ * @github https://github.com/mAntala/wp-js-help
+ * @license MIT
+ *
+ * Copyright (c) 2018 Maroš Antala
+ *
+ */
 var WPJSHelp = function WPJSHelp() {
   // PRIVATE VARIABLES
   var _body = document.body; // PRIVATE FUNCTIONS
@@ -9,7 +22,7 @@ var WPJSHelp = function WPJSHelp() {
   /**
    * Checks if body has class provided as parameter.
    * @param  {String}  className Class name to check if <body> contains.
-   * @return {Boolean}           
+   * @return {Boolean}
    */
 
   var hasBodyClass = function hasBodyClass(className) {
@@ -160,6 +173,18 @@ var WPJSHelp = function WPJSHelp() {
 
     return;
   };
+  /**
+   * Removes all HTML tags including <script> and <style>
+   * @param  {String} string HTML string
+   * @return {String}        Returns string without HTML tags
+   * @credis Petrović Stefan
+   * @website https://petrovicstefan.rs/
+   */
+
+
+  var stripAllTags = function stripAllTags(string) {
+    return string.replace(/<[^>]*>/g, '');
+  };
 
   return {
     isHome: isHome,
@@ -169,7 +194,8 @@ var WPJSHelp = function WPJSHelp() {
     getArticleID: getArticleID,
     getCategoryID: getCategoryID,
     getCategoryName: getCategoryName,
-    functionExists: functionExists
+    functionExists: functionExists,
+    stripAllTags: stripAllTags
   };
 };
 
