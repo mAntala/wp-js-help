@@ -15,4 +15,4 @@ First, try ```_WPHelp```, then try what you want:
 * ```isSearch``` to check, if page is search results page.
 * ```functionExists``` to check, if certain function exists.
 * ```stripAllTags``` to remove all HTML tags from string (<script> & <style> included).
-* ```getPermalink``` to get full permalink or article.
+* ```getPermalink``` to get full permalink of article.
