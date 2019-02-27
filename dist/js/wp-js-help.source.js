@@ -177,13 +177,23 @@ var WPJSHelp = function WPJSHelp() {
    * Removes all HTML tags including <script> and <style>
    * @param  {String} string HTML string
    * @return {String}        Returns string without HTML tags
-   * @credis Petrović Stefan
+   * @credits Petrović Stefan
    * @website https://petrovicstefan.rs/
    */
 
 
   var stripAllTags = function stripAllTags(string) {
     return string.replace(/<[^>]*>/g, '');
+  };
+  /**
+   * Returns full article URL.
+   * @return {String} Full URL with protocol, domain and full path.
+   * Does not return query.
+   */
+
+
+  var getPermalink = function getPermalink() {
+    return isArticle() ? window.location.origin + window.location.pathname : null;
   };
 
   return {
@@ -195,7 +205,8 @@ var WPJSHelp = function WPJSHelp() {
     getCategoryID: getCategoryID,
     getCategoryName: getCategoryName,
     functionExists: functionExists,
-    stripAllTags: stripAllTags
+    stripAllTags: stripAllTags,
+    getPermalink: getPermalink
   };
 };
 
