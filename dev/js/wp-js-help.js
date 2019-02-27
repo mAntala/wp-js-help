@@ -153,10 +153,19 @@ const WPJSHelp = (function() {
    * Removes all HTML tags including <script> and <style>
    * @param  {String} string HTML string
    * @return {String}        Returns string without HTML tags
-   * @credis Petrović Stefan
+   * @credits Petrović Stefan
    * @website https://petrovicstefan.rs/
    */
   const stripAllTags = (string) => string.replace(/<[^>]*>/g, '');
+
+  /**
+   * Returns full article URL.
+   * @return {String} Full URL with protocol, domain and full path.
+   * Does not return query.
+   */
+  const getPermalink = () => {
+    return (isArticle()) ? window.location.origin + window.location.pathname : null;
+  }
 
   return {
     isHome,
@@ -167,7 +176,8 @@ const WPJSHelp = (function() {
     getCategoryID,
     getCategoryName,
     functionExists,
-    stripAllTags
+    stripAllTags,
+    getPermalink
   };
 
 });
