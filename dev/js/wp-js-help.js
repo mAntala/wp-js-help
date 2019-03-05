@@ -168,15 +168,28 @@ const WPJSHelp = (function() {
   }
 
   /**
-   * Returns articlie's excerpt without whitespace and invisible tags,
+   * Returns article's excerpt without whitespace and invisible tags,
    * like Enters, etc...
    * @param  {String} [excerptElement='.the-excerpt'] Class of elements where is excerpt.
    * @return {String}                                 Article's excerpt.
    */
   const getTheExcerpt = (excerptElement = '.the-excerpt') => {
     if(isArticle()) {
-      let excerptText = document.querySelector(excerptElement);
-      return excerptText.innerText.trim().replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+      let excerptText = document.querySelector(excerptElement).innerText;
+      return excerptText.trim().replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    }
+    return null;
+  }
+
+  /**
+   * Returns article's title.
+   * @param  {String} titleElement Class or ID of title's element.
+   * @return {String}              Article's title.
+   */
+  const getPostTitle = (titleElement) => {
+    if(typeof titleElement !== 'undefined' && isArticle()) {
+      let titleText = document.querySelector(titleElement).innerText;
+      return titleText.trim();
     }
     return null;
   }
@@ -193,6 +206,7 @@ const WPJSHelp = (function() {
     stripAllTags,
     getPermalink,
     getTheExcerpt,
+    getPostTitle
   };
 
 });
