@@ -26,8 +26,7 @@ const WPJSHelp = (function() {
     if(className) {
       return _body.classList.contains(className);
     }
-
-    return;
+    return null;
   }
 
   /**
@@ -86,8 +85,7 @@ const WPJSHelp = (function() {
         }
       }
     }
-
-    return;
+    return null;
   }
   /**
    * Get category ID.
@@ -105,8 +103,7 @@ const WPJSHelp = (function() {
         }
       }
     }
-
-    return;
+    return null;
   }
   /**
    * Get category name.
@@ -124,8 +121,7 @@ const WPJSHelp = (function() {
         }
       }
     }
-
-    return;
+    return null;
   }
 
   /**
@@ -146,7 +142,7 @@ const WPJSHelp = (function() {
         return true;
       }
     }
-    return;
+    return null;
   }
 
   /**
@@ -171,7 +167,7 @@ const WPJSHelp = (function() {
    * Returns article's excerpt without whitespace and invisible tags,
    * like Enters, etc...
    * @param  {String} [excerptElement='.the-excerpt'] Class of elements where is excerpt.
-   * @return {String}                                 Article's excerpt.
+   * @return {Object}                                 Article's excerpt.
    */
   const getTheExcerpt = (excerptElement = '.the-excerpt') => {
     if(isArticle()) {
@@ -184,12 +180,14 @@ const WPJSHelp = (function() {
   /**
    * Returns article's title.
    * @param  {String} titleElement Class or ID of title's element.
-   * @return {String}              Article's title.
+   * @return {Object}              Article's title.
    */
   const getPostTitle = (titleElement) => {
     if(typeof titleElement !== 'undefined' && isArticle()) {
       let titleText = document.querySelector(titleElement).innerText;
-      return titleText.trim();
+      return {
+        title: titleText.trim();
+      }
     }
     return null;
   }
