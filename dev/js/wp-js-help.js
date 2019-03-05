@@ -4,7 +4,7 @@
  * Here we are.
  * @description WordPress PHP functions made in JavaScript to be used on front-end.
  * @author Maroš Antala
- * @version 0.0.1
+ * @version 1.0.0
  * @github https://github.com/mAntala/wp-js-help
  * @license MIT
  *
