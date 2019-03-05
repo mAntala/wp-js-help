@@ -167,6 +167,20 @@ const WPJSHelp = (function() {
     return (isArticle()) ? window.location.origin + window.location.pathname : null;
   }
 
+  /**
+   * Returns articlie's excerpt without whitespace and invisible tags,
+   * like Enters, etc...
+   * @param  {String} [excerptElement='.the-excerpt'] Class of elements where is excerpt.
+   * @return {String}                                 Article's excerpt.
+   */
+  const getTheExcerpt = (excerptElement = '.the-excerpt') => {
+    if(isArticle()) {
+      let excerptText = document.querySelector(excerptElement);
+      return excerptText.innerText.trim().replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    }
+    return null;
+  }
+
   return {
     isHome,
     isCategory,
@@ -177,7 +191,8 @@ const WPJSHelp = (function() {
     getCategoryName,
     functionExists,
     stripAllTags,
-    getPermalink
+    getPermalink,
+    getTheExcerpt,
   };
 
 });

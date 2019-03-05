@@ -195,6 +195,24 @@ var WPJSHelp = function WPJSHelp() {
   var getPermalink = function getPermalink() {
     return isArticle() ? window.location.origin + window.location.pathname : null;
   };
+  /**
+   * Returns articlie's excerpt without whitespace and invisible tags,
+   * like Enters, etc...
+   * @param  {String} [excerptElement='.the-excerpt'] Class of elements where is excerpt.
+   * @return {String}                                 Article's excerpt.
+   */
+
+
+  var getTheExcerpt = function getTheExcerpt() {
+    var excerptElement = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '.the-excerpt';
+
+    if (isArticle()) {
+      var excerptText = document.querySelector(excerptElement);
+      return excerptText.innerText.trim().replace(/[\x00-\x1F\x7F-\x9F]/g, '');
+    }
+
+    return null;
+  };
 
   return {
     isHome: isHome,
@@ -206,7 +224,8 @@ var WPJSHelp = function WPJSHelp() {
     getCategoryName: getCategoryName,
     functionExists: functionExists,
     stripAllTags: stripAllTags,
-    getPermalink: getPermalink
+    getPermalink: getPermalink,
+    getTheExcerpt: getTheExcerpt
   };
 };
 
