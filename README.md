@@ -16,3 +16,4 @@ First, try ```_WPHelp```, then try what you want:
 * ```functionExists``` to check, if certain function exists.
 * ```stripAllTags``` to remove all HTML tags from string (<script> & <style> included).
 * ```getPermalink``` to get full permalink of article.
+* ```getTheExcerpt``` to get post's excerpt without white space and invisible tags (like Enter)
